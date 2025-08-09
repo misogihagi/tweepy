@@ -115,6 +115,7 @@ class BaseClient:
                                 "Rate limit exceeded. "
                                 f"Sleeping for {sleep_time} seconds."
                             )
+                            # If 429 is returned even after exceeding the specified number of times → Possibility of monthly cap
                             if self._rate_limit_retry_count >= self._max_rate_limit_retries:
                                 logger.warning(
                                     "Still receiving 429 after multiple waits. "
